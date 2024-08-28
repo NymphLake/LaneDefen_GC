@@ -104,6 +104,7 @@ MonoBehaviour:
   Speed: 400
   gameManager: {fileID: 0}
   StunTime: 200
+  health: {fileID: -8372118754821526870}
 --- !u!61 &4455454537161764585
 BoxCollider2D:
   m_ObjectHideFlags: 0

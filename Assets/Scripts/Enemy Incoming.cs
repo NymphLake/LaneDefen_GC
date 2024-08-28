@@ -29,18 +29,22 @@ public class EnemyIncoming : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             health.DamageTaken();
-            Destroy(gameObject);
+            //Destroy(gameObject);
             
-/*            RIG2D.velocity = new Vector2(0 * Time.deltaTime, 0);
+            /*RIG2D.velocity = new Vector2(0 * Time.deltaTime, 0);
 
             if (StunTime >= 3)
             {
                 RIG2D.velocity = new Vector2(-Speed * Time.deltaTime, 0);
                 StunTime = 0;
             }
-*/
+            */
         }
     }
-    pr
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
 
 }

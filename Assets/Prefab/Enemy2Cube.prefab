@@ -104,6 +104,7 @@ MonoBehaviour:
   Speed: 100
   gameManager: {fileID: 0}
   StunTime: 50
+  health: {fileID: -8399296109942656606}
 --- !u!50 &1066115933665918518
 Rigidbody2D:
   serializedVersion: 4

@@ -31,11 +31,9 @@ public class Movement : MonoBehaviour
     #endregion
     void Start()
     {
-        
         RIG2D = GetComponent<Rigidbody2D>();
         speed = 8;
         BulletSpeed = 10f;
-        
     }
     private void OnEnable()
     {
@@ -93,31 +91,6 @@ public class Movement : MonoBehaviour
     private void PlayerSequence(InputAction.CallbackContext context)
     {
         playerMomentum = true;
-    }
-
-    public void SequenceTry()
-    {
-        Debug.Log("Doki");
-
-
-        countertime += Time.deltaTime;
-
-        //ReadValue will determine the input the key is pressed
-        //If key is completly pressed it will be 1 
-        //Half pressed 0.5
-        //No press is 0
-       /* bool isSpaceHeld = spaceAttack.ReadValue<float>() > 0.1f; 
-
-        if (isSpaceHeld)
-        {
-            
-            if (countertime > delaytime)
-            {
-                Destroy(Instantiate(gObject, transform.position, Quaternion.identity),
-                30f);
-                countertime = 0;
-            }
-        }*/
     }
     #endregion
 
