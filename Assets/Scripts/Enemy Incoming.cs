@@ -11,11 +11,11 @@ public class EnemyIncoming : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     public float StunTime;
     [SerializeField] EnemyHealth health;
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         RIG2D.velocity = new Vector2(-Speed * Time.deltaTime, 0);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Death Wall")
         {
@@ -41,5 +41,6 @@ public class EnemyIncoming : MonoBehaviour
 */
         }
     }
+    pr
 
 }
