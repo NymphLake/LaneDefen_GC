@@ -21,11 +21,12 @@ public class Movement : MonoBehaviour
     private Vector3 player; 
     private float speed;
     public float TimeTime;
+    public AudioClip FiringSound; //For destorying enemy
     private float playerButtonData;
     private bool playerMomentum;
     private float countertime;
     private GameObject gObject;
-    private float delaytime = 1f;
+    private float delaytime = 0.5f; //Delay of the holding down space speed
     private bool spacepressed;
     private GameManager gameManager;
     #endregion
@@ -54,13 +55,11 @@ public class Movement : MonoBehaviour
  #region
     private void SpaceBarCancel(InputAction.CallbackContext context)
     {
-        Debug.Log("Space up");
         spacepressed = false;
     }
    
     private void SpaceBarAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("Space down");
         spacepressed = true;
         TimeTime = 7;
     }
@@ -69,6 +68,8 @@ public class Movement : MonoBehaviour
      public void Tester()
      {
         Debug.Log("Spawn Bullet");
+        //AudioSource.PlayClipAtPoint(FiringSound, locationBullet.position);
+        GetComponent<AudioSource>().PlayOneShot(FiringSound);
         GameObject Apple = Instantiate(Bullet,locationBullet.position, locationBullet.rotation);
         Apple.GetComponent<Rigidbody2D>().AddForce(locationBullet.right * BulletSpeed, ForceMode2D.Impulse);
      }
@@ -111,7 +112,7 @@ public class Movement : MonoBehaviour
     {
         if (spacepressed == true)
         {
-           
+            
             TimeTime += Time.deltaTime;
 
             if (TimeTime > delaytime)

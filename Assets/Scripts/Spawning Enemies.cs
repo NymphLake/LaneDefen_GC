@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawningEnemies : MonoBehaviour
 {
-    [SerializeField] private GameObject[] enemytypes;
+    /*[SerializeField] private GameObject[] enemytypes;
     [SerializeField] private GameObject[] lanes;
 
 
@@ -20,21 +20,21 @@ public class SpawningEnemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      /*  StartCoroutine(spawnEnemy(Enemy1SpawnTime, Enemy1));
+      *//*  StartCoroutine(spawnEnemy(Enemy1SpawnTime, Enemy1));
         StartCoroutine(spawnEnemy(Enemy2SpawnTime, Enemy2)); 
-        StartCoroutine(spawnEnemy(Enemy3SpawnTime, Enemy3)); */
+        StartCoroutine(spawnEnemy(Enemy3SpawnTime, Enemy3)); *//*
     }
 
     // Update is called once per frame
     public void Update()
     {
-        /*SpawnTimer = SpawnTimer + Time.deltaTime;
+        *//*SpawnTimer = SpawnTimer + Time.deltaTime;
         if (SpawnTimer == 5)
         {
             int Enemy = Random.Range(0, enemytypes.Length);
             int Lane = Random.Range(0, lanes.Length);
             Instantiate(enemytypes[Enemy], lanes[Lane].transform.position, Quaternion.identity);
-        }*/
+        }*//*
 
 
     }
@@ -45,5 +45,5 @@ public class SpawningEnemies : MonoBehaviour
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 
-
+*/
 }
