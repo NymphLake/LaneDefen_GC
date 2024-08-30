@@ -13,9 +13,10 @@ public class EnemyIncoming : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] EnemyHealth health;
     public Animator EnemyAnimation;
+    public Animator BulletAnimation;
     private bool stunnedwaittime;
-    public float StunTime;
-    public float Timer;
+    public float StunTime; //Time when they are stunned
+    public float Timer; //Counts up
     public float transfersped;
     #endregion
     public void Start()
@@ -56,9 +57,7 @@ public class EnemyIncoming : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
-
             health.DamageTaken();
-            Destroy(collision.gameObject);
             transfersped = StunnedSped;
             stunnedwaittime = true;
             EnemyAnimation.SetBool("GotHit", true);

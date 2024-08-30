@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     public void BulletSpawner()
      {
         //This is to help put all the data into the game object to make copies off 
-        GameObject BulletLaunch = Instantiate(Bullet,locationBullet.position, locationBullet.rotation);
+        GameObject BulletLaunch = Instantiate(Bullet,locationBullet.position, locationBullet.rotation);   
         //So then when it is good to launch it will use force and speed to send it into a specific diretion
         BulletLaunch.GetComponent<Rigidbody2D>().AddForce(locationBullet.right * BulletSpeed, ForceMode2D.Impulse);
         GetComponent<AudioSource>().PlayOneShot(FiringSound);

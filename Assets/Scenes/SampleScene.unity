@@ -666,7 +666,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2056,7 +2056,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2478,7 +2478,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3548,7 +3548,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4697,7 +4697,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4906,9 +4906,9 @@ MonoBehaviour:
   RIG2D: {fileID: 2121775457}
   Bullet: {fileID: 7788608348659643196, guid: f4df23ff8d589954e89493480a8d590f, type: 3}
   locationBullet: {fileID: 834623936}
-  TimeTime: 0
   FiringSound: {fileID: 8300000, guid: 756df3de6a35b6c4e8f34fc931424887, type: 3}
   BulletAnimation: {fileID: 6471215752864704147, guid: f4df23ff8d589954e89493480a8d590f, type: 3}
+  Stopwatch: 0
 --- !u!114 &2121775456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5157,7 +5157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8466546653625091744, guid: f0bac53f347cb5448921f57df45e8881, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8466546653625091744, guid: f0bac53f347cb5448921f57df45e8881, type: 3}
       propertyPath: m_TagString
@@ -5267,6 +5267,10 @@ PrefabInstance:
       propertyPath: EnemyAnimation
       value: 
       objectReference: {fileID: 1102651276}
+    - target: {fileID: 7430124855128980736, guid: 0734cd547a9cbcf49a3ef07ebb5a0eba, type: 3}
+      propertyPath: BulletAnimation
+      value: 
+      objectReference: {fileID: 6471215752864704147, guid: f4df23ff8d589954e89493480a8d590f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5359,6 +5363,10 @@ PrefabInstance:
       propertyPath: EnemyAnimation
       value: 
       objectReference: {fileID: 2087769052}
+    - target: {fileID: 5734185630897982823, guid: dabc4bcb5c39c324482c13ab73554b69, type: 3}
+      propertyPath: BulletAnimation
+      value: 
+      objectReference: {fileID: 6471215752864704147, guid: f4df23ff8d589954e89493480a8d590f, type: 3}
     - target: {fileID: 6562523418543555511, guid: dabc4bcb5c39c324482c13ab73554b69, type: 3}
       propertyPath: m_IsTrigger
       value: 1
