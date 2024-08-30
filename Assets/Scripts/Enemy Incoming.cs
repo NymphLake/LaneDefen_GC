@@ -6,19 +6,22 @@ using UnityEngine;
 
 public class EnemyIncoming : MonoBehaviour
 {
+    #region
     [SerializeField] private Rigidbody2D RIG2D;
     [SerializeField] private float Speed;//Normal EnemmySpeed
     [SerializeField] private float StunnedSped; //Speed when hit
     [SerializeField] private GameManager gameManager;
     [SerializeField] EnemyHealth health;
+    public Animator EnemyAnimation;
+    private bool stunnedwaittime;
     public float StunTime;
     public float Timer;
     public float transfersped;
-    private bool stunnedwaittime;
+    #endregion
     public void Start()
     {
-        transfersped = Speed;
-        StunTime = 0.4f;
+        transfersped = Speed;//Giving speed to something else to be saved for later
+        StunTime = 0.5f;//How long they remain stunned/stopped
         Timer = 0;
     }
     public void FixedUpdate()
@@ -34,14 +37,15 @@ public class EnemyIncoming : MonoBehaviour
             if(Timer >= StunTime)
             {
                 transfersped = Speed;
-                Timer = 0; 
+                Timer = 0;
+                EnemyAnimation.SetBool("GotHit", false);
                 stunnedwaittime = false;
             }
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Death Wall")
+        if (collision.gameObject.tag == "Death Wall") //The barriers at the end/ behind the spawning enemies
         {
             gameManager.PlayerHealth();
             Destroy(gameObject);
@@ -52,18 +56,12 @@ public class EnemyIncoming : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
+
             health.DamageTaken();
             Destroy(collision.gameObject);
             transfersped = StunnedSped;
             stunnedwaittime = true;
-        }
-    }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-           
-
+            EnemyAnimation.SetBool("GotHit", true);
         }
     }
 }

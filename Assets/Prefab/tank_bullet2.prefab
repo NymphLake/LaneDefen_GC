@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -9117384156878299845}
   - component: {fileID: -8706699594608664210}
   - component: {fileID: -7775071827221733079}
+  - component: {fileID: 6471215752864704147}
   m_Layer: 0
   m_Name: tank_bullet2
   m_TagString: Bullet
@@ -171,3 +172,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d430701d520226e45908f6bfe400dfc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletAnimation: {fileID: 6471215752864704147}
+--- !u!95 &6471215752864704147
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788608348659643196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5b28bc8cc62d084e9c2e8effe4402e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

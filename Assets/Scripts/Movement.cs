@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,22 +10,19 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D RIG2D;
     [SerializeField] private GameObject Bullet;
     [SerializeField] private Transform locationBullet;
-    //public TankBullets SpeedOfBull;
-    private float BulletSpeed = 2f; 
     private InputAction spaceAttack;
     private InputAction Restart;
     private InputAction Quit;
-    private Vector3 player; 
-    private float speed;
-    public float TimeTime;
+    private GameManager gameManager;
     public AudioClip FiringSound; //For destorying enemy
+    public Animator BulletAnimation;
+    private float BulletSpeed = 2f; 
+    private float speed;
     private float playerButtonData;
     private bool playerMomentum;
-    private float countertime;
-    private GameObject gObject;
     private float delaytime = 0.5f; //Delay of the holding down space speed
     private bool spacepressed;
-    private GameManager gameManager;
+    public float Stopwatch; //Timer that counts up, need public to monitor
     #endregion
     void Start()
     {
@@ -52,7 +46,7 @@ public class Movement : MonoBehaviour
         spaceAttack.started += SpaceBarAttack;
         spaceAttack.canceled += SpaceBarCancel;
     }
- #region
+    #region
     private void SpaceBarCancel(InputAction.CallbackContext context)
     {
         spacepressed = false;
@@ -61,19 +55,16 @@ public class Movement : MonoBehaviour
     private void SpaceBarAttack(InputAction.CallbackContext context)
     {
         spacepressed = true;
-        TimeTime = 7;
+        Stopwatch = 7;
     }
-
-    //APPLE1
-     public void Tester()
+    public void BulletSpawner()
      {
-        Debug.Log("Spawn Bullet");
-        //AudioSource.PlayClipAtPoint(FiringSound, locationBullet.position);
+        //This is to help put all the data into the game object to make copies off 
+        GameObject BulletLaunch = Instantiate(Bullet,locationBullet.position, locationBullet.rotation);
+        //So then when it is good to launch it will use force and speed to send it into a specific diretion
+        BulletLaunch.GetComponent<Rigidbody2D>().AddForce(locationBullet.right * BulletSpeed, ForceMode2D.Impulse);
         GetComponent<AudioSource>().PlayOneShot(FiringSound);
-        GameObject Apple = Instantiate(Bullet,locationBullet.position, locationBullet.rotation);
-        Apple.GetComponent<Rigidbody2D>().AddForce(locationBullet.right * BulletSpeed, ForceMode2D.Impulse);
      }
-
     private void PlayerStoppedMove(InputAction.CallbackContext context)
     {
        playerMomentum = false;
@@ -81,7 +72,7 @@ public class Movement : MonoBehaviour
 
     private void QuitGame(InputAction.CallbackContext context)
     {
-        Application.Quit();
+        Application.Quit(); //Do not make it spacebar
     }
 
     private void RestartedGame(InputAction.CallbackContext context)
@@ -95,7 +86,22 @@ public class Movement : MonoBehaviour
     }
     #endregion
 
-    // Update is called once per frame
+    #region
+    public void Update()
+    {
+        if (spacepressed == true)
+        {
+            Stopwatch += Time.deltaTime;
+            //If the time is more than the delay time then bullets will spawn
+            //then the stopwatch will be brought back to 0 to get ready for 
+            //more bullets
+            if (Stopwatch > delaytime)
+            { 
+                BulletSpawner();
+                Stopwatch = 0; 
+            }
+        }
+    }
     void FixedUpdate()
     {
         if (playerMomentum == true)
@@ -108,23 +114,6 @@ public class Movement : MonoBehaviour
             RIG2D.velocity = new Vector2(0, 0);
         }
     }
-    public void Update()
-    {
-        if (spacepressed == true)
-        {
-            
-            TimeTime += Time.deltaTime;
-
-            if (TimeTime > delaytime)
-            { 
-                Tester();
-                Debug.Log("Timer reset");
-                TimeTime = 0;
-               
-            }
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
@@ -140,4 +129,5 @@ public class Movement : MonoBehaviour
         spaceAttack.canceled -= SpaceBarCancel;
 
     }
+    #endregion
 }

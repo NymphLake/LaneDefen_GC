@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public float SpawnTimer; 
     public AudioClip PlayerHurt;
     //public int enemysetpoints = 115; 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -75,8 +74,10 @@ public class GameManager : MonoBehaviour
         if (SpawnTimer >= 1.15f)
         {
             SpawnTimer = 0;
-            int Enemy = Random.Range(0, enemytypes.Length);
-            int Lane = Random.Range(0, lanes.Length);
+            int Lane = Random.Range(0, lanes.Length);//Starts at 0 and goes up to the length maximum
+            int Enemy = Random.Range(0, enemytypes.Length); //Same thing here! But only for 3 enemies 
+            //This way now it will start with generating an enemy at random then the lane aka the starting spot 
+            //then the rotationish but doesn't really matter that much I think
             Instantiate(enemytypes[Enemy], lanes[Lane].transform.position, Quaternion.identity);
         }
     }
